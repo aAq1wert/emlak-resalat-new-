@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173f35">
+<title>املاک رسالت | خرید، فروش، رهن و اجاره</title>
+<style>
+:root{--green:#173f35;--green2:#24594b;--gold:#d6b46a;--bg:#f4f6f3;--ink:#1c2924;--muted:#68756e;--card:#fff;--line:#e1e8e2}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,"Vazirmatn",Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(135deg,var(--green),#0e2b24);color:#fff;padding:22px 16px 18px;border-radius:0 0 24px 24px}
+.top{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;background:var(--gold);color:var(--green);display:grid;place-items:center;font-size:28px;font-weight:bold}.brand{font-size:20px;font-weight:800}.sub{font-size:12px;color:#dce8df;margin-top:5px}.header-actions{display:flex;gap:8px;margin-top:18px}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:700}.btn.gold{background:var(--gold);color:#182d25}.btn.outline{background:transparent;border:1px solid #91ab9e;color:#fff}.wrap{max-width:900px;margin:auto;padding:16px}.searchbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:-2px;box-shadow:0 5px 20px #153d2b0c}.searchbox h2{margin:0 0 12px;font-size:16px}.filters{display:grid;grid-template-columns:1fr 1fr;gap:9px}.field{width:100%;border:1px solid var(--line);background:#fbfcfb;border-radius:10px;padding:11px;color:var(--ink);min-width:0}.field.full{grid-column:1/-1}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px}.sectionhead h2{font-size:18px;margin:0}.count{font-size:12px;color:var(--muted)}.cards{display:grid;grid-template-columns:1fr;gap:12px}.listing{background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden;display:grid;grid-template-columns:115px 1fr;min-height:150px}.photo{background:linear-gradient(145deg,#dce6de,#a7b9aa);display:flex;align-items:center;justify-content:center;color:#466452;font-size:38px}.details{padding:13px}.tag{display:inline-block;font-size:11px;padding:5px 8px;border-radius:7px;background:#eaf2eb;color:var(--green);font-weight:bold}.listing h3{font-size:15px;margin:9px 0 6px}.meta{font-size:12px;color:var(--muted);line-height:1.8}.price{font-weight:800;color:var(--green);margin-top:7px;font-size:14px}.card-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.smallbtn{border:0;border-radius:9px;padding:8px 10px;font-size:12px;font-weight:bold;background:#edf3ee;color:var(--green)}.smallbtn.primary{background:var(--green);color:#fff}.empty{background:#fff;border:1px dashed #bdcbbf;padding:25px;border-radius:15px;text-align:center;color:var(--muted);font-size:13px}.tabs{display:flex;gap:8px;overflow:auto;margin:16px 0}.tab{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:#fff;color:var(--green);font-size:13px}.tab.active{background:var(--green);color:#fff;border-color:var(--green)}.panel{display:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin-top:15px}.panel.active{display:block}.panel h2{font-size:17px;margin:0 0 14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.formgrid label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.formgrid .field{margin-top:6px}.formgrid .full{grid-column:1/-1}.hint{font-size:12px;line-height:1.8;color:var(--muted);margin-top:12px}.footer{padding:25px 10px;text-align:center;color:var(--muted);font-size:12px}.contactbar{display:flex;gap:8px;margin-top:14px}.contactbar a{flex:1;text-align:center;text-decoration:none;border-radius:11px;padding:12px;font-weight:bold;font-size:13px}.call{background:var(--green);color:#fff}.wa{background:#e3f5e9;color:#146b39}.notice{background:#fff8e8;border:1px solid #f0dfb6;padding:11px;border-radius:11px;font-size:12px;line-height:1.8;color:#665226;margin-top:12px}
+@media(min-width:620px){.cards{grid-template-columns:1fr 1fr}.listing{grid-template-columns:125px 1fr}.wrap{padding:20px}.filters{grid-template-columns:repeat(4,1fr)}.filters .field.full{grid-column:auto}.filters .field:first-child{grid-column:span 2}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="logo">ر</div><div><div class="brand">املاک رسالت</div><div class="sub">خرید • فروش • رهن • اجاره | بلوار فلسطین</div></div></div>
+ <div class="header-actions"><button class="btn gold" onclick="showPanel('add')">＋ ثبت ملک</button><button class="btn outline" onclick="showPanel('requests')">ثبت درخواست مشتری</button></div>
+</header>
+<main class="wrap">
+ <section class="searchbox">
+  <h2>خانه موردنظرت را پیدا کن</h2>
+  <div class="filters">
+   <select id="filterType" class="field" onchange="renderListings()"><option value="">همه نوع معامله</option><option>خرید</option><option>اجاره</option><option>رهن کامل</option></select>
+   <select id="filterKind" class="field" onchange="renderListings()"><option value="">همه نوع ملک</option><option>آپارتمان</option><option>خانه</option><option>ویلایی</option><option>زمین</option><option>مغازه</option></select>
+   <input id="filterArea" class="field" placeholder="محله یا منطقه" oninput="renderListings()">
+   <button class="btn gold" type="button" onclick="showPanel('listings');renderListings()">جست‌وجو</button>
+  </div>
+ </section>
+ <div class="tabs">
+  <button class="tab active" id="tabListings" onclick="showPanel('listings')">آگهی‌های ملک</button>
+  <button class="tab" id="tabAdd" onclick="showPanel('add')">ثبت ملک</button>
+  <button class="tab" id="tabRequests" onclick="showPanel('requests')">درخواست مشتری</button>
+ </div>
+ <section id="panelListings" class="panel active">
+  <div class="sectionhead"><h2>ملک‌های موجود</h2><span class="count" id="listingCount"></span></div>
+  <div id="cards" class="cards"></div>
+ </section>
+ <section id="panelAdd" class="panel">
+  <h2>ثبت ملک جدید</h2>
+  <form id="listingForm" class="formgrid">
+   <div><label>عنوان آگهی</label><input class="field" name="title" required placeholder="مثلاً آپارتمان ۸۰ متری"></div>
+   <div><label>نوع معامله</label><select class="field" name="type" required><option>خرید</option><option>اجاره</option><option>رهن کامل</option></select></div>
+   <div><label>نوع ملک</label><select class="field" name="kind"><option>آپارتمان</option><option>خانه</option><option>ویلایی</option><option>زمین</option><option>مغازه</option></select></div>
+   <div><label>محله</label><input class="field" name="area" required placeholder="نام محله"></div>
+   <div><label>متراژ (متر)</label><input class="field" name="size" type="number" min="1" required></div>
+   <div><label>تعداد اتاق</label><input class="field" name="rooms" type="number" min="0" placeholder="مثلاً ۲"></div>
+   <div><label>قیمت / ودیعه (تومان)</label><input class="field" name="price" type="number" min="0" placeholder="عدد به تومان"></div>
+   <div><label>اجاره ماهانه (تومان)</label><input class="field" name="rent" type="number" min="0" placeholder="در صورت نیاز"></div>
+   <div class="full"><label>توضیحات</label><textarea class="field" name="description" rows="3" placeholder="وضعیت سند، طبقه، امکانات و..."></textarea></div>
+   <div class="full"><button class="btn gold" type="submit">ذخیره آگهی در این گوشی</button></div>
+  </form>
+  <div class="hint">این نسخه اولیه است: آگهی‌ها فعلاً فقط در همین مرورگر ذخیره می‌شوند و برای نمایش عمومی روی همه گوشی‌ها به پایگاه داده و پنل مدیریت آنلاین نیاز است.</div>
+ </section>
+ <section id="panelRequests" class="panel">
+  <h2>ثبت درخواست مشتری</h2>
+  <form id="requestForm" class="formgrid">
+   <div><label>نام مشتری</label><input class="field" name="name" required></div>
+   <div><label>شماره تماس</label><input class="field" name="phone" type="tel" required placeholder="شماره موبایل"></div>
+   <div><label>نوع درخواست</label><select class="field" name="type"><option>خرید</option><option>اجاره</option><option>رهن کامل</option><option>فروش ملک</option><option>اجاره دادن ملک</option></select></div>
+   <div><label>بودجه (تومان)</label><input class="field" name="budget" type="number" min="0"></div>
+   <div class="full"><label>محله و توضیحات موردنیاز</label><textarea class="field" name="details" rows="3" placeholder="محله، متراژ، تعداد اتاق و..."></textarea></div>
+   <div class="full"><button class="btn gold" type="submit">آماده‌سازی پیام واتساپ</button></div>
+  </form>
+  <p class="hint">با زدن دکمه، متن درخواست آماده می‌شود و واتساپ باز خواهد شد؛ پیام را خودت بررسی و ارسال می‌کنی.</p>
+ </section>
+ <div class="contactbar"><a class="call" href="tel:09922440413">تماس با املاک رسالت</a><a class="wa" href="https://wa.me/989922440413" target="_blank" rel="noopener">واتساپ</a></div>
+ <div class="notice">اطلاعات آگهی‌ها را با اجازه مالک منتشر کن و پیش از هر معامله، مدارک و شرایط ملک را بررسی کن.</div>
+ <footer class="footer">املاک رسالت – بلوار فلسطین<br>نسخه نمایشی اولیه • قابل توسعه به اپلیکیشن آنلاین</footer>
+</main>
+<script>
+const starter = [
+ {id:1,title:"نمونه آپارتمان ۸۰ متری",type:"خرید",kind:"آپارتمان",area:"بلوار فلسطین",size:80,rooms:2,price:0,rent:0,description:"این آگهی نمونه است؛ برای نمایش ملک واقعی ویرایش یا حذفش کنید."},
+ {id:2,title:"نمونه خانه ویلایی",type:"اجاره",kind:"ویلایی",area:"صفائیه",size:200,rooms:2,price:200000000,rent:25000000,description:"این آگهی نمونه است؛ مبلغ و جزئیات واقعی را وارد کنید."}
+];
+function getListings(){
+ try {
+  const raw=localStorage.getItem("resalat_listings");
+  if(raw===null){localStorage.setItem("resalat_listings",JSON.stringify(starter));return starter.slice()}
+  const x=JSON.parse(raw); return Array.isArray(x)?x:starter.slice();
+ } catch(e){return starter.slice()}
+}
+function saveListings(x){try{localStorage.setItem("resalat_listings",JSON.stringify(x))}catch(e){alert("ذخیره‌سازی مرورگر در دسترس نیست؛ لطفاً صفحه را در مرورگر اصلی باز کنید.")}}
+function normalizeFa(v){return String(v??"").toLowerCase().replace(/[يى]/g,"ی").replace(/ك/g,"ک").replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"۰۱۲۳۴۵۶۷۸۹"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]).replace(/\s+/g," ").trim()}
+function toman(n){n=Number(n||0);if(!n)return "تماس بگیرید";return n.toLocaleString("fa-IR")+" تومان"}
+function renderListings(){
+ const type=document.getElementById("filterType").value,kind=document.getElementById("filterKind").value,area=normalizeFa(document.getElementById("filterArea").value);
+ const items=getListings().filter(x=>{
+  const searchable=normalizeFa([x.area,x.title,x.description,x.kind,x.type].join(" "));
+  return (!type||x.type===type)&&(!kind||x.kind===kind)&&(!area||searchable.includes(area));
+ });
+ document.getElementById("listingCount").textContent=items.length.toLocaleString("fa-IR")+" آگهی";
+ const el=document.getElementById("cards");
+ if(!items.length){el.innerHTML='<div class="empty">آگهی‌ای با این مشخصات پیدا نشد.</div>';return}
+ el.innerHTML=items.map(x=>`<article class="listing"><div class="photo">⌂</div><div class="details"><span class="tag">${esc(x.type)} • ${esc(x.kind)}</span><h3>${esc(x.title)}</h3><div class="meta">${esc(x.area)} · ${Number(x.size||0).toLocaleString("fa-IR")} متر · ${x.rooms?Number(x.rooms).toLocaleString("fa-IR")+" اتاق":"تعداد اتاق نامشخص"}</div><div class="price">${x.type==="اجاره"?"ودیعه: "+toman(x.price)+" · اجاره: "+toman(x.rent):toman(x.price)}</div><div class="meta">${esc(x.description||"")}</div><div class="card-actions"><a class="smallbtn primary" style="text-decoration:none" href="tel:09922440413">تماس</a><button class="smallbtn" onclick="deleteListing(${x.id})">حذف</button></div></div></article>`).join("");
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function deleteListing(id){if(!confirm("این آگهی از همین گوشی حذف شود؟"))return;saveListings(getListings().filter(x=>x.id!==id));renderListings()}
+function showPanel(name){
+ ["listings","add","requests"].forEach(n=>{document.getElementById("panel"+n[0].toUpperCase()+n.slice(1)).classList.toggle("active",n===name);const t=document.getElementById("tab"+n[0].toUpperCase()+n.slice(1));if(t)t.classList.toggle("active",n===name)});
+ if(name!=="listings")document.getElementById("panel"+name[0].toUpperCase()+name.slice(1)).scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.getElementById("listingForm").addEventListener("submit",e=>{
+ e.preventDefault();const f=new FormData(e.target),x=Object.fromEntries(f.entries());x.id=Date.now();x.size=Number(x.size);x.rooms=Number(x.rooms||0);x.price=Number(x.price||0);x.rent=Number(x.rent||0);
+ const all=getListings().filter(a=>!starter.some(s=>s.id===a.id));all.unshift(x);saveListings(all);e.target.reset();renderListings();showPanel("listings");alert("آگهی در همین مرورگر ذخیره شد.");
+});
+document.getElementById("requestForm").addEventListener("submit",e=>{
+ e.preventDefault();const f=Object.fromEntries(new FormData(e.target).entries());
+ const msg=`سلام، درخواست جدید برای املاک رسالت:%0Aنام: ${encodeURIComponent(f.name)}%0Aتلفن: ${encodeURIComponent(f.phone)}%0Aنوع درخواست: ${encodeURIComponent(f.type)}%0Aبودجه: ${encodeURIComponent(f.budget||"مشخص نشده")}%0Aتوضیحات: ${encodeURIComponent(f.details||"ندارد")}`;
+ window.open("https://wa.me/989922440413?text="+msg,"_blank","noopener");
+});
+renderListings();
+</script>
+</body>
+</html>
